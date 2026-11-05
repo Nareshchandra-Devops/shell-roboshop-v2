@@ -3,7 +3,7 @@
 source ./common.sh
 check_root
 
-cp rabbitmq.repo /etc/yum.repo.d/rabbitmq.repo
+cp rabbitmq.repo /etc/yum.repos.d/rabbitmq.repo
 validate $? "Adding RabbitMQ repo"
 
 dnf install erlang rabbitmq-server -y &>> $logs_file

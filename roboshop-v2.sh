@@ -2,8 +2,8 @@
 
 ami_id="ami-0055977a6e828a4f4"
 instance_type="t3.micro"
-domain_name="daws92s.store"
-hosted_zone_id="Z01595761DU8O4AX48D6A"
+domain_name="balasani.online"
+hosted_zone_id="Z02580022QM4YCJYL8TDP"
 
 for instance in $@
 do

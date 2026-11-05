@@ -2,8 +2,8 @@
 
 ami_id="ami-0055977a6e828a4f4"
 instance_type="t3.micro"
-domain_name="balasani.online"
-hosted_zone_id="Z02580022QM4YCJYL8TDP"
+domain_name="daws92s.store"
+hosted_zone_id="Z01595761DU8O4AX48D6A"
 
 for instance in $@
 do
@@ -12,7 +12,7 @@ do
     instance_id=$(aws ec2 run-instances \
             --image-id $ami_id \
             --instance-type $instance_type \
-            --security-groups "roboshop common" "roboshop-$instance" \
+            --security-groups "roboshop-common" "roboshop-$instance" \
             --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=roboshop-$instance}]" \
             --query 'Instances[0].InstanceId' \
             --output text

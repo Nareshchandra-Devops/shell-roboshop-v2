@@ -68,8 +68,11 @@ python_setup(){
     dnf install python3.14 python3.14-pip -y &>> $logs_file
     validate $? "Installing Python 3.14"
 
-    python3.14 -m venv/bin/pip install -r requirements.txt &>> $logs_file
-    validate $? "installing dependencies"
+    python3.14 -m venv /app/.venv &>> $logs_file
+    validate $? "Creating virtual environment"
+
+    /app/.venv/bin/pip install -r requirements.txt &>> $logs_file
+    validate $? "Installing dependencies"
 
 }
 
@@ -94,7 +97,6 @@ app_setup(){
     cd /app
     unzip "/tmp/$app_name.zip" &>> $logs_file
     validate $? "Unzipping $app_name"
-
 }
 
 systemd_setup(){
@@ -114,5 +116,5 @@ restart(){
 
 total_time(){
     echo -e "$(timestamp) [INFO] Script completed in $SECONDS seconds" | tee -a $logs_file
-    echo -e "$(timestamp) [INFO] ==== Script completed Execution =====" | tee -a $logs_file
+    echo -e "$(timestamp) [INFO] ==== Script completed Execution =====" | tee -a $logs_file    
 }

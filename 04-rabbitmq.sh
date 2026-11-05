@@ -15,13 +15,13 @@ validate $? "Starting and Enabling RabbitMQ server"
 
 rabbitmqctl list_users | grep -qw "roboshop"
 if [ $? -ne 0 ]; then
-    rabbitmq add_user roboshop roboshop123 &>> $logs_file
-    validate $? "Creating RabbitMQ user for Roboshop"
+    rabbitmqctl add_user roboshop roboshop123 &>> $logs_file
+    validate $? "Creating RabbitMQ user for Roboshop"    
 else
-    echo -e "$(timestamp) [INFO] RabbitMQ user already exist..${Y}SKIPPING{N}"
+    echo -e "$(timestamp) [INFO] RabbitMQ user already exist...${Y}SKIPPING${N}" 
 fi
 
-rabbitmqctl set permission -p / roboshop ".*" ".*" ".*" &>> $logs_file
-validate $? "Setting permissions for RabbitMQ user for ROboshop"
+rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>> $logs_file
+validate $? "Setting permissions for RabbitMQ user for Roboshop"
 
 total_time

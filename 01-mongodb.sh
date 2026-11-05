@@ -13,3 +13,5 @@ validate $? "Install MongoDB"
 systemctl enable mongodb &>> $logs_file
 systemctl start mongodb &>> $logs_file
 validate $? "Enable and start MongoDB"
+
+total_time
